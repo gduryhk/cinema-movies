@@ -16,8 +16,8 @@ after_success:
 - if [ "$TRAVIS_BRANCH" == "master" ]; then docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
   docker push gdury/cinema-movies:$TRAVIS_BUILD_NUMBER; fi
 - ssh docker@52.221.244.175 'docker stop cinema-movies || true';
-- ssh docker@52.221.244.175 'docker rm -f cinema-users || true';
-- ssh docker@52.221.244.175 "docker run -d --name cinema-movies--env VIRTUAL_HOST=movies.dury.pro --link db gdury/cinema-movies:$TRAVIS_BUILD_NUMBER";
+- ssh docker@52.221.244.175 'docker rm -f cinema-movies || true';
+- ssh docker@52.221.244.175 "docker run -d --name cinema-movies --env VIRTUAL_HOST=movies.dury.pro --link db gdury/cinema-movies:$TRAVIS_BUILD_NUMBER";
 env:
   global:
     secure: XVNIA53tqkB34pk93CRSTOSvt0Dhazw0PoumSVrNaY+0yKLrAMvLpku0iT3/WnLfnC4mqIJ+LXrrCXUW1l7J1D6k/WJc9MVr52TRpPowS2Ecv16iXF1HRYR8fSpq67mA1l1lXCGKPVqfmSpgdI/dAZAB+j+zeqCxcbXVnIedOSYdq0+FfVhnq96BnvKG3/3att2KsX+fCpDakLHTXDf5qrTSeKnlK3V4ihkhGh5oW0CqnLatGRAXHV5CLPxCqHv7/hB2pwDSWiw8h3QKYlGKKitNJ+GODG2fNjoBcmzp+WVIikq2egCPXT+hEEFFAHYxaTxXIJdFeiIQbaXe+fF8ij2Ithd7umxhJA8+/oNUvb7qFjZgChsIsY2BvulS8MGjpPRFXrMrvzG01Bj3xPat0kredTCj10zge5uK0rgEUYqXHtOaVnlSoQabGVZgrtiLWuV6v2dYDaKJNIcVwPuQQ/WWDwWrJiShs6xBtGpwtCdyCORgONWVE+5/OsDo9Y9rycOfa4xxhABRfAAVFkMhvbxzz7HhyHMjEYl+MUsSrLBTCUs+htbA7phCqQBdMzY6xkz307+j2mL62WZ/hH762yw7KFgII+CS53znOmYqeEbgOrVvIn9WAUPf1j+ht+ZDQQ5+WeWGuYc4/pLPUX2QsXyOOWtHtvvvhkauhPnX6HQ=
